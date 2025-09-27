@@ -1,0 +1,1 @@
+- [/] Elastic will implement in here. / But need to understand double adapter for one Repository port which includes the write methods from (persistence) modules and read operations from (elastic) module !

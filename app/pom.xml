@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.btoy</groupId>
+        <artifactId>debezium</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <artifactId>app</artifactId>
+    <name>app</name>
+    <url>https://maven.apache.org</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.btoy</groupId>
+            <artifactId>domain-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.btoy</groupId>
+            <artifactId>domain-application-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.btoy</groupId>
+            <artifactId>application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.btoy</groupId>
+            <artifactId>persistence</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.btoy</groupId>
+            <artifactId>elastic</artifactId>
+        </dependency>
+        <!-- ################################################################ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
