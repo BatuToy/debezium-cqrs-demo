@@ -17,16 +17,16 @@ public class BeanAwarePublisher {
 
     private static final Logger logger = Logger.getLogger(BeanAwarePublisher.class.getSimpleName());
 
-    public <R, I extends QueryCase> void publish(I queryDto) {
+    public <R, I extends QueryCase> R publish(I queryDto) {
         QueryHandler<R, I> handler = HandlerRegistry.INSTANCE.fetchQueryHandlerFromRegistry(queryDto);
         validateQueryHandler(handler, queryDto);
-        handler.handle(queryDto);
+        return handler.handle(queryDto);
     }
 
-    public <R, I extends CommandCase> void publish(I commandDto) {
+    public <R, I extends CommandCase> R publish(I commandDto) {
         CommandHandler<R, I> handler = HandlerRegistry.INSTANCE.fetchCommandHandlerFromRegistry(commandDto);
         validateCommandHandler(handler, commandDto);
-        handler.handle(commandDto);
+        return handler.handle(commandDto);
     }
 
     private <R, I extends CommandCase> void validateCommandHandler(CommandHandler<R, I> handler, I commandDto) {

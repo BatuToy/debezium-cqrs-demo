@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public class HandlerRegistry {
+public class HandlerRegistry<R, I> {
 
     private static final Logger logger = Logger.getLogger(HandlerRegistry.INSTANCE.getClass().getSimpleName());
 
