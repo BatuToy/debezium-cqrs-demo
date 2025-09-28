@@ -19,6 +19,10 @@
             <groupId>com.btoy</groupId>
             <artifactId>domain-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.btoy</groupId>
+            <artifactId>event-bus</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
