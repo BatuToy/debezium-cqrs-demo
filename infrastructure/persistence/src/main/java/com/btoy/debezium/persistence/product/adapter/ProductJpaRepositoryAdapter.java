@@ -1,9 +1,9 @@
-package com.btoy.debeziım.persistence.product.adapter;
+package com.btoy.debezium.persistence.product.adapter;
 
 import com.btoy.debezium.domain.port.output.repository.ProductRepositoryPort;
 import com.btoy.debezium.domain.product.Product;
-import com.btoy.debeziım.persistence.product.mapper.ProductDataMapper;
-import com.btoy.debeziım.persistence.product.repository.ProductJpaRepository;
+import com.btoy.debezium.persistence.product.mapper.ProductDataMapper;
+import com.btoy.debezium.persistence.product.repository.ProductJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

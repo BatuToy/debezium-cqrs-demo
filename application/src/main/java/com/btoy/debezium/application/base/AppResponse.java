@@ -1,4 +1,4 @@
-package com.btoy.debeziım.application.base;
+package com.btoy.debezium.application.base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 public class AppResponse<T> {
 
     private List<T> payload;
-
     private final Error errorMessage;
     private final int statusCode;
 

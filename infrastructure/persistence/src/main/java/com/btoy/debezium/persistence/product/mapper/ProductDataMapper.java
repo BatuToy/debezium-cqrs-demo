@@ -1,11 +1,11 @@
-package com.btoy.debeziım.persistence.product.mapper;
+package com.btoy.debezium.persistence.product.mapper;
 
 import com.btoy.debezium.domain.base.vo.Money;
 import com.btoy.debezium.domain.base.vo.Rate;
 import com.btoy.debezium.domain.product.Product;
 import com.btoy.debezium.domain.product.vo.ProductId;
 import com.btoy.debezium.domain.product.vo.SkuCode;
-import com.btoy.debeziım.persistence.product.entity.ProductEntity;
+import com.btoy.debezium.persistence.product.entity.ProductEntity;
 
 public final class ProductDataMapper {
 

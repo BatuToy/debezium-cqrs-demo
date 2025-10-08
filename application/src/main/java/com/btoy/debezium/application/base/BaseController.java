@@ -1,4 +1,4 @@
-package com.btoy.debeziım.application.base;
+package com.btoy.debezium.application.base;
 
 import com.btoy.debezium.event_bus.publisher.BeanAwarePublisher;
 

@@ -15,6 +15,7 @@
     <url>https://maven.apache.org</url>
 
     <dependencies>
+
         <dependency>
             <groupId>com.btoy</groupId>
             <artifactId>domain-application-service</artifactId>

@@ -9,7 +9,9 @@ import com.btoy.debezium.event_bus.command.InitializeProductCommandDto;
 import com.btoy.debezium.event_bus.command.InitializeProductResponseDto;
 import com.btoy.debezium.event_bus.handler.CommandHandler;
 import com.btoy.debezium.event_bus.publisher.ObservablePublisher;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InitializeProductCommandHandler extends ObservablePublisher implements CommandHandler<InitializeProductResponseDto, InitializeProductCommandDto> {
 
     private final ProductDomainService productDomainService;

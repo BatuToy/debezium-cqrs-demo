@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   postgres:
-    image: postgres:18beta3-alpine # Fresh Updates from the Postgres !
+    image: postgres:18beta3-alpine
     container_name: db
     hostname: postgres
     environment:
@@ -11,7 +11,7 @@ services:
       POSTGRES_DB: app_db
     healthcheck:
       test: ['CMD-SHELL', "pg_isready -U app_user -d app_db"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
       retries: 20
     volumes:
@@ -21,10 +21,44 @@ services:
       - "5433:5432"
     networks: [cdc]
 
+
+  elastic:
+    image: elasticsearch:9.1.5
+    container_name: es-dev
+    hostname: host_elastic
+    ports:
+      - "9200:9200" ### Application accept requests from this port !
+      - "9300:9300"
+    environment:
+      xpack.security.enabled: false
+      discovery.type: single-node
+      ES_JAVA_OPTIONS: -Xms1g -Xms1g
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:9200"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - elastic-data:/usr/share/elasticsearch/data
+    networks: [cdc]
+
+
+  kibana:
+    image: kibana:9.1.5
+    container_name: elk-kibana
+    depends_on: [elastic]
+    hostname: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_HOSTS: http://localhost:9200
+    networks: [cdc]
+
 volumes:
   db-data:
+  elastic-data:
 
 networks:
   cdc:
-    enable_ipv6: true
+    enable_ipv6: false
     driver: bridge

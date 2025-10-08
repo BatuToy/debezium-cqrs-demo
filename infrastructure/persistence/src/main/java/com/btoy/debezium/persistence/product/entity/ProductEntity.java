@@ -1,4 +1,4 @@
-package com.btoy.debeziım.persistence.product.entity;
+package com.btoy.debezium.persistence.product.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity(name = "product")
-@Table(name = "t_product", indexes = {
-        @Index(name = "", columnList = "")
+@Table(name = "t_product", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"SKU_CODE"}, name = "product_unique_sku_code")
 })
 @Getter
 @Setter

@@ -6,16 +6,20 @@ server:
     threads:
       max: 300
 
-
 logging:
   level:
     org.hibernate.sql: trace
+    org.elasticsearch.client: info
 
 spring:
   application:
     name: debezium-demos
   main:
     lazy-initialization: true # For fast start up need to check the metrics as well.
+
+  elasticsearch:
+    uris: http://localhost:9200
+
   datasource:
     url: jdbc:postgresql://[::1]:5433/app_db # IPv6 connection to postgresql server.
     username: app_user
