@@ -9,6 +9,9 @@ import java.util.UUID;
 @Entity(name = "product")
 @Table(name = "t_product", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"SKU_CODE"}, name = "product_unique_sku_code")
+},
+        indexes = {
+                @Index(name = "idx_product_sku_code", columnList = "STOCK_CODE")
 })
 @Getter
 @Setter
@@ -23,6 +26,9 @@ public class ProductEntity {
 
     @Column(name = "PRODUCT_NAME", nullable = false)
     private String name;
+
+    @Column(name = "DESCRIPTION", nullable = false)
+    private String description;
 
     @Column(name = "BRAND_NAME", unique = true, nullable = false)
     private String brand;

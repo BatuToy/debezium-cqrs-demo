@@ -23,6 +23,10 @@
             <groupId>com.btoy</groupId>
             <artifactId>event-bus</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.btoy</groupId>
+            <artifactId>shared-kernel</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

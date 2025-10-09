@@ -25,6 +25,7 @@
         <module>event-bus</module>
         <module>application</module>
         <module>domain</module>
+        <module>shared-kernel</module>
     </modules>
 
     <properties>
@@ -71,6 +72,11 @@
             <dependency>
                 <groupId>com.btoy</groupId>
                 <artifactId>event-bus</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.btoy</groupId>
+                <artifactId>shared-kernel</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

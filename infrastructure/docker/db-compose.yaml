@@ -31,10 +31,10 @@ services:
       - "9300:9300"
     environment:
       xpack.security.enabled: false
-      discovery.type: single-node
+      discovery.type: single-node # Could be a multiple node as well !
       ES_JAVA_OPTIONS: -Xms1g -Xms1g
     healthcheck:
-      test: ["CMD", "curl", "-sf", "http://localhost:9200"]
+      test: ["CMD-SHELL", "curl -sf http://localhost:9200"]
       interval: 15s
       timeout: 5s
       retries: 10
@@ -47,6 +47,7 @@ services:
     image: kibana:9.1.5
     container_name: elk-kibana
     depends_on: [elastic]
+    restart: unless-stopped
     hostname: kibana
     ports:
       - "5601:5601"

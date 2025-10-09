@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
  * author: batu
  */
 @Repository
-public interface ProductDocumentRepository  extends ElasticsearchRepository<ProductDocument, String> {}
+public interface ProductDocumentRepository  extends ElasticsearchRepository<ProductDocument, String> {
+}
