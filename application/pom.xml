@@ -22,7 +22,7 @@
 
         <dependency>
             <groupId>com.btoy</groupId>
-            <artifactId>event-bus</artifactId>
+            <artifactId>domain-application-service</artifactId>
         </dependency>
     </dependencies>
 

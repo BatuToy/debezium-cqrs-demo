@@ -1,6 +1,6 @@
 package com.btoy.debezium.domain.port.output.elastic;
 
-import com.btoy.debezium.event_bus.query.ProductDocumentDto;
+import com.btoy.debezium.domain.product.Product;
 
 import java.util.List;
 
@@ -10,5 +10,7 @@ import java.util.List;
  */
 public interface ProductElasticQueryPort {
 
-    List<ProductDocumentDto> searchProducts(String query);
+    List<Product> searchWithQuery(String query, int page, int size);
+
+    void saveDoc(Product product);
 }

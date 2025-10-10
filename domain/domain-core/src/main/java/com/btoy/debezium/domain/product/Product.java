@@ -17,6 +17,7 @@ public class Product extends BaseEntity<ProductId> {
 
     private final String name;
     private final String brand;
+    private final String description;
     private final Rate discountRate;
     private final Rate taxRate;
     private final Money price;
@@ -24,6 +25,7 @@ public class Product extends BaseEntity<ProductId> {
 
     void validate() {
         validateInitialProduct();
+        validateDescription();
         validateProductName();
         validateProductBrandName();
         validateDiscountRate();
@@ -52,6 +54,13 @@ public class Product extends BaseEntity<ProductId> {
 
     private void validateProductBrandName() {
         if (this.brand.length() < 3 || this.brand.length() > 20) {
+            logger.severe("");
+            throw new ProductDomainException("");
+        }
+    }
+
+    private void validateDescription() {
+        if (Objects.nonNull(this.description) && this.description.length() > 100) {
             logger.severe("");
             throw new ProductDomainException("");
         }
@@ -93,6 +102,7 @@ public class Product extends BaseEntity<ProductId> {
         taxRate = builder.taxRate;
         price = builder.price;
         skuCode = builder.skuCode;
+        description = builder.description;
     }
 
     public static Builder builder() {
@@ -107,6 +117,7 @@ public class Product extends BaseEntity<ProductId> {
         private Rate taxRate;
         private Money price;
         private SkuCode skuCode;
+        private String description;
 
         private Builder() {
         }
@@ -150,6 +161,11 @@ public class Product extends BaseEntity<ProductId> {
             return this;
         }
 
+        public Builder description(String val) {
+            description = val;
+            return this;
+        }
+
         public Product build() {
             return new Product(this);
         }
@@ -177,5 +193,9 @@ public class Product extends BaseEntity<ProductId> {
 
     public SkuCode getSkuCode() {
         return skuCode;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

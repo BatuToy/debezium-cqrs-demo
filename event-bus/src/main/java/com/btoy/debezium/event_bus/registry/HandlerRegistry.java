@@ -4,19 +4,21 @@ import com.btoy.debezium.event_bus.command.CommandCase;
 import com.btoy.debezium.event_bus.handler.CommandHandler;
 import com.btoy.debezium.event_bus.handler.QueryHandler;
 import com.btoy.debezium.event_bus.query.QueryCase;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
-public class HandlerRegistry<R, I> {
 
-    private static final Logger logger = Logger.getLogger(HandlerRegistry.INSTANCE.getClass().getSimpleName());
+@Slf4j
+@Getter
+public class HandlerRegistry {
 
     private Map<Class<? extends CommandCase>, CommandHandler<?, ? extends CommandCase>> commandHandlerRegistry;
     private Map<Class<? extends QueryCase>, QueryHandler<?, ? extends QueryCase>> queryHandlerRegistry;
 
-    public static final HandlerRegistry INSTANCE = new HandlerRegistry();
+    public static HandlerRegistry INSTANCE = new HandlerRegistry();
 
     private HandlerRegistry() {
         this.commandHandlerRegistry = new HashMap<>();
@@ -25,12 +27,12 @@ public class HandlerRegistry<R, I> {
 
     public <R, I extends CommandCase> void register(Class<I> commandDto, CommandHandler<R, I> commandHandler) {
         commandHandlerRegistry.put(commandDto, commandHandler);
-        logger.info("Command Handler= " + commandHandler.getClass().getSimpleName() + " registered successfully with commandDto= "+ commandDto.getSimpleName() +" !");
+        log.info("Command Handler= " + commandHandler.getClass().getSimpleName() + " registered successfully with commandDto= "+ commandDto.getSimpleName() +" !");
     }
 
     public <R, I extends QueryCase> void register(Class<I> queryDto, QueryHandler<R, I> queryHandler) {
         queryHandlerRegistry.put(queryDto, queryHandler);
-        logger.info("Query Handler= " + queryHandler.getClass().getSimpleName() + " registered successfully with commandDto= "+ queryDto.getSimpleName() +" !");
+        log.info("Query Handler= " + queryHandler.getClass().getSimpleName() + " registered successfully with commandDto= "+ queryDto.getSimpleName() +" !");
     }
 
     @SuppressWarnings("unchecked")

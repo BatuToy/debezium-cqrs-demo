@@ -15,6 +15,7 @@ public final class ProductMapper {
     public static Product toInitialProduct(InitializeProductCommandDto commandDto) {
         return Product.builder()
                 .name(commandDto.getName())
+                .description(commandDto.getDescription())
                 .brand(commandDto.getBrand())
                 .skuCode(new SkuCode(commandDto.getSkuCode()))
                 .taxRate(new Rate(commandDto.getTaxRate()))

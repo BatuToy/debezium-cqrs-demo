@@ -46,7 +46,9 @@ services:
   kibana:
     image: kibana:9.1.5
     container_name: elk-kibana
-    depends_on: [elastic]
+    depends_on:
+      elastic:
+        condition: service_healthy
     restart: unless-stopped
     hostname: kibana
     ports:

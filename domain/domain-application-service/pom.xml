@@ -27,6 +27,11 @@
             <groupId>com.btoy</groupId>
             <artifactId>shared-kernel</artifactId>
         </dependency>
+        <!-- SPRING DEPENDENCIES -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -6,7 +6,7 @@ import com.btoy.debezium.event_bus.handler.QueryHandler;
 import com.btoy.debezium.event_bus.query.QueryCase;
 import com.btoy.debezium.event_bus.registry.HandlerRegistry;
 
-public abstract class ObservablePublisher extends BeanAwarePublisher {
+public class ObservablePublisher extends BeanAwarePublisher {
 
     @SuppressWarnings("unchecked")
     public <R, I extends CommandCase> void register(CommandHandler<R, I> handler, Class<I> commandDto) {

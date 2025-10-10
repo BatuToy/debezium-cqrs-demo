@@ -1,6 +1,8 @@
 package com.btoy.debezium.elastic.repository;
 
 import com.btoy.debezium.elastic.document.ProductDocument;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,4 +12,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ProductDocumentRepository  extends ElasticsearchRepository<ProductDocument, String> {
+
+    Page<ProductDocument> findProductDocumentBySkuCode(String skuCode, Pageable pageable);
 }

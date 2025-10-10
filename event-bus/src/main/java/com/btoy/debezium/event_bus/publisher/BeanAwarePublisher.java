@@ -13,20 +13,20 @@ import java.util.logging.Logger;
 
 
 @Component
-public class BeanAwarePublisher {
+public abstract class BeanAwarePublisher {
 
     private static final Logger logger = Logger.getLogger(BeanAwarePublisher.class.getSimpleName());
 
     @SuppressWarnings("unchecked")
     public <R, I extends QueryCase> R publish(I queryDto) {
-        QueryHandler<R, I> handler = (QueryHandler<R, I>) HandlerRegistry.INSTANCE.fetchQueryHandlerFromRegistry(queryDto);
+        QueryHandler<R, I> handler = HandlerRegistry.INSTANCE.fetchQueryHandlerFromRegistry(queryDto);
         validateQueryHandler(handler, queryDto);
         return handler.handle(queryDto);
     }
 
     @SuppressWarnings("unchecked")
     public <R, I extends CommandCase> R publish(I commandDto) {
-        CommandHandler<R, I> handler = (CommandHandler<R, I>) HandlerRegistry.INSTANCE.fetchCommandHandlerFromRegistry(commandDto);
+        CommandHandler<R, I> handler = HandlerRegistry.INSTANCE.fetchCommandHandlerFromRegistry(commandDto);
         validateCommandHandler(handler, commandDto);
         return handler.handle(commandDto);
     }

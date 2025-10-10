@@ -14,20 +14,20 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 public class ProductDocument {
 
     @Id
-    @Field(type = FieldType.Auto, name = "PRODUCT_ID")
+    @Field(type = FieldType.Text, name = "PRODUCT_ID")
     private String id;
 
     @Field(type = FieldType.Text, name = "PRODUCT_NAME")
     private String name;
+
+    @Field(type = FieldType.Text, name = "DESCRIPTION")
+    private String description;
 
     @Field(type = FieldType.Double, name = "PRICE")
     private Double price;
 
     @Field(type = FieldType.Keyword, name = "STOCK_CODE")
     private String skuCode;
-
-    @Field(type = FieldType.Text, name = "DESCRIPTION")
-    private String description;
 
     @Field(type = FieldType.Double, name = "TAX_RATE")
     private Double taxRate;

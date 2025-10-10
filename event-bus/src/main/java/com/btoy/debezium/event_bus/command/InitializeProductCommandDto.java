@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 public class InitializeProductCommandDto implements CommandCase {
 
     private final String name;
+    private final String description;
     private final String brand;
     private final String skuCode;
     private final Double taxRate;

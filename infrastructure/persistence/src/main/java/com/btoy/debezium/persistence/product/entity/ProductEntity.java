@@ -2,6 +2,7 @@ package com.btoy.debezium.persistence.product.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Version;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -29,6 +30,9 @@ public class ProductEntity {
 
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
+
+    @Version
+    private Long version;  // For OptimisticLockException -> don't miss the lock issues in hibernate !
 
     @Column(name = "BRAND_NAME", unique = true, nullable = false)
     private String brand;

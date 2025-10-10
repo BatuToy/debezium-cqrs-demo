@@ -1,8 +1,11 @@
 package com.btoy.debezium.elastic.mapper;
 
+import com.btoy.debezium.domain.base.vo.Money;
+import com.btoy.debezium.domain.base.vo.Rate;
 import com.btoy.debezium.domain.product.Product;
+import com.btoy.debezium.domain.product.vo.ProductId;
+import com.btoy.debezium.domain.product.vo.SkuCode;
 import com.btoy.debezium.elastic.document.ProductDocument;
-import com.btoy.debezium.event_bus.query.ProductDocumentDto;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -17,27 +20,27 @@ public final class ProductDocumentDataMapper {
         throw new UnsupportedOperationException("Could not reach this class from outside !");
     }
 
-    public static ProductDocument toDocument(ProductDocumentDto productDocumentDto) {
+    public static ProductDocument toDocument(Product product) {
         return ProductDocument.builder()
-                .id(productDocumentDto.getId().toString())
-                .name(productDocumentDto.getProductName())
-                .description(productDocumentDto.getDescription())
-                .skuCode(productDocumentDto.getSkuCode())
-                .price(Double.valueOf(productDocumentDto.getPrice().toString()))
-                .taxRate(productDocumentDto.getTaxRate())
-                .discountRate(productDocumentDto.getDiscountRate())
+                .id(product.getId().toString())
+                .name(product.getName())
+                .description(product.getDescription())
+                .skuCode(product.getDescription())
+                .price(Double.valueOf(product.getPrice().getAmount().toString()))
+                .taxRate(product.getTaxRate().getValue())
+                .discountRate(product.getDiscountRate().getValue())
                 .build();
     }
 
-    public static ProductDocumentDto toDocumentDto(ProductDocument document) {
-        return ProductDocumentDto.builder()
-                .id(UUID.fromString(document.getId()))
-                .productName(document.getName())
+    public static Product toDomain(ProductDocument document) {
+        return Product.builder()
+                .id(new ProductId(UUID.fromString(document.getId())))
+                .name(document.getName())
                 .description(document.getDescription())
-                .skuCode(document.getSkuCode())
-                .price(BigDecimal.valueOf(document.getPrice()))
-                .taxRate(document.getTaxRate())
-                .discountRate(document.getDiscountRate())
+                .skuCode(new SkuCode(document.getSkuCode()))
+                .price(Money.of(BigDecimal.valueOf(document.getPrice())))
+                .taxRate(new Rate(document.getTaxRate()))
+                .discountRate(new Rate(document.getDiscountRate()))
                 .build();
     }
 

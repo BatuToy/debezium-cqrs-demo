@@ -8,11 +8,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /*
- * @created 09/10/2025 ~~ 09:43
+ * @created 10/10/2025 ~~ 15:15
  * author: batu
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+@Target(value = ElementType.TYPE)
 @Component
-public @interface CommandHandler {
+public @interface Publisher {
 }

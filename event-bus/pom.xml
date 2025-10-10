@@ -12,8 +12,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.btoy</groupId>
+            <artifactId>shared-kernel</artifactId>
         </dependency>
     </dependencies>
 </project>
