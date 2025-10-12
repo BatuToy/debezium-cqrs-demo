@@ -15,10 +15,10 @@ import java.util.Map;
 @Getter
 public class HandlerRegistry {
 
-    private Map<Class<? extends CommandCase>, CommandHandler<?, ? extends CommandCase>> commandHandlerRegistry;
-    private Map<Class<? extends QueryCase>, QueryHandler<?, ? extends QueryCase>> queryHandlerRegistry;
+    private final Map<Class<? extends CommandCase>, CommandHandler<?, ? extends CommandCase>> commandHandlerRegistry;
+    private final Map<Class<? extends QueryCase>, QueryHandler<?, ? extends QueryCase>> queryHandlerRegistry;
 
-    public static HandlerRegistry INSTANCE = new HandlerRegistry();
+    public static final  HandlerRegistry INSTANCE = new HandlerRegistry();
 
     private HandlerRegistry() {
         this.commandHandlerRegistry = new HashMap<>();

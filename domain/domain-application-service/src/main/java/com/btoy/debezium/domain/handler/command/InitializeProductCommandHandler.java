@@ -10,16 +10,15 @@ import com.btoy.debezium.event_bus.command.InitializeProductCommandDto;
 import com.btoy.debezium.event_bus.command.InitializeProductResponseDto;
 import com.btoy.debezium.event_bus.handler.CommandHandler;
 import com.btoy.debezium.event_bus.publisher.ObservablePublisher;
-import org.springframework.stereotype.Component;
+import com.btoy.debezium.shared.annotations.DomainComponent;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
 
-import java.util.concurrent.ExecutorService;
+import java.util.List;
 
-
-@Validated
-@Transactional
-@Component
+@Slf4j
+@DomainComponent
 public class InitializeProductCommandHandler extends ObservablePublisher implements CommandHandler<InitializeProductResponseDto, InitializeProductCommandDto> {
 
     private final ProductDomainService productDomainService;
@@ -36,6 +35,7 @@ public class InitializeProductCommandHandler extends ObservablePublisher impleme
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public InitializeProductResponseDto handle(InitializeProductCommandDto commandDto) {
         Product initialProduct = ProductMapper.toInitialProduct(commandDto);
         ProductInitializedEvent productInitializedEvent = productDomainService.validateAndInitializeProduct(initialProduct);

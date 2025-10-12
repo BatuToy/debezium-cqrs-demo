@@ -23,10 +23,7 @@
             <groupId>com.btoy</groupId>
             <artifactId>event-bus</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.btoy</groupId>
-            <artifactId>shared-kernel</artifactId>
-        </dependency>
+
         <!-- SPRING DEPENDENCIES -->
         <dependency>
             <groupId>org.springframework</groupId>

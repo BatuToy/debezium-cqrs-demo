@@ -12,4 +12,6 @@ import lombok.Getter;
 public class GetAllProductsQuery implements QueryCase{
 
     private final String searchQuery;
+    private final Integer page;
+    private final Integer size;
 }

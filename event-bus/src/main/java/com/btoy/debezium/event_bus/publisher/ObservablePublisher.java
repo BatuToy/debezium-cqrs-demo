@@ -8,12 +8,10 @@ import com.btoy.debezium.event_bus.registry.HandlerRegistry;
 
 public class ObservablePublisher extends BeanAwarePublisher {
 
-    @SuppressWarnings("unchecked")
     public <R, I extends CommandCase> void register(CommandHandler<R, I> handler, Class<I> commandDto) {
         HandlerRegistry.INSTANCE.register(commandDto, handler);
     }
 
-    @SuppressWarnings("unchecked")
     public <R, I extends QueryCase> void register(QueryHandler<R, I> handler, Class<I> queryDto) {
         HandlerRegistry.INSTANCE.register(queryDto, handler);
     }

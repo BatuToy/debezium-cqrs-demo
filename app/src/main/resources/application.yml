@@ -1,7 +1,7 @@
 server:
   port: 9090
   servlet:
-    context-path: '/api/v*'
+    context-path: '/api/v1'
   jetty:
     threads:
       max: 300

@@ -6,12 +6,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /*
  * @created 08/10/2025 ~~ 15:01
  * author: batu
  */
 @Repository
 public interface ProductDocumentRepository  extends ElasticsearchRepository<ProductDocument, String> {
-
-    Page<ProductDocument> findProductDocumentBySkuCode(String skuCode, Pageable pageable);
+    
+    Page<ProductDocument> findByName(String name, Pageable pageable);
 }

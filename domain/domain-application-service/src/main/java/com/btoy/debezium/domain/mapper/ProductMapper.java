@@ -5,6 +5,7 @@ import com.btoy.debezium.domain.base.vo.Rate;
 import com.btoy.debezium.domain.product.Product;
 import com.btoy.debezium.domain.product.vo.SkuCode;
 import com.btoy.debezium.event_bus.command.InitializeProductCommandDto;
+import com.btoy.debezium.event_bus.query.ProductDocumentDto;
 
 public final class ProductMapper {
 
@@ -21,6 +22,18 @@ public final class ProductMapper {
                 .taxRate(new Rate(commandDto.getTaxRate()))
                 .discountRate(new Rate(commandDto.getDiscountRate()))
                 .price(new Money(commandDto.getPrice()))
+                .build();
+    }
+
+    public static ProductDocumentDto toProductDocumentDto(Product product) {
+        return ProductDocumentDto.builder()
+                .id(product.getId().getValue())
+                .productName(product.getName())
+                .description(product.getDescription())
+                .skuCode(product.getSkuCode().getValue())
+                .price(product.getPrice().getAmount())
+                .discountRate(product.getDiscountRate().getValue())
+                .taxRate(product.getTaxRate().getValue())
                 .build();
     }
 }

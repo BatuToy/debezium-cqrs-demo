@@ -3,7 +3,7 @@ version: '3.9'
 services:
   postgres:
     image: postgres:18beta3-alpine
-    container_name: db
+    container_name: deb-db
     hostname: postgres
     environment:
       POSTGRES_USER: app_user
@@ -27,7 +27,7 @@ services:
     container_name: es-dev
     hostname: host_elastic
     ports:
-      - "9200:9200" ### Application accept requests from this port !
+      - "9200:9200" ### Instance accept requests from this port !
       - "9300:9300"
     environment:
       xpack.security.enabled: false

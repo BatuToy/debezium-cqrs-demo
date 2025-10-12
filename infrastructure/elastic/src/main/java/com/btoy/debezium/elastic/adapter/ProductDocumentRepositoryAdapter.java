@@ -26,7 +26,7 @@ public class ProductDocumentRepositoryAdapter implements ProductElasticQueryPort
 
     @Override
     public List<Product> searchWithQuery(String query, int page, int size) {
-        return productDocumentRepository.findProductDocumentBySkuCode(query, PageRequest.of(page, size))
+        return productDocumentRepository.findByName(query, PageRequest.of(page, size))
                 .map(ProductDocumentDataMapper::toDomain).toList();
     }
 
@@ -35,6 +35,5 @@ public class ProductDocumentRepositoryAdapter implements ProductElasticQueryPort
         productDocumentRepository.save(ProductDocumentDataMapper.toDocument(product));
         logger.info("Product document synced successfully in to elastic instance !");
     }
-
 
 }

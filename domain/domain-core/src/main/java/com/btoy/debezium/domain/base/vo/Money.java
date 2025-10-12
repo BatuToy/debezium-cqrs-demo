@@ -23,7 +23,7 @@ public class Money {
 
     public static Money of(BigDecimal amount) {
         Objects.requireNonNull(amount);
-        return scaleMoney(new Money(amount));
+        return new Money(amount);
     }
 
     public Money add(Money added) {

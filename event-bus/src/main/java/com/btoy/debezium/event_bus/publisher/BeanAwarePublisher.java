@@ -6,25 +6,23 @@ import com.btoy.debezium.event_bus.handler.CommandHandler;
 import com.btoy.debezium.event_bus.handler.QueryHandler;
 import com.btoy.debezium.event_bus.query.QueryCase;
 import com.btoy.debezium.event_bus.registry.HandlerRegistry;
-import org.springframework.stereotype.Component;
+import com.btoy.debezium.shared.annotations.DomainComponent;
 
 import java.util.Objects;
 import java.util.logging.Logger;
 
 
-@Component
-public abstract class BeanAwarePublisher {
+@DomainComponent
+public class BeanAwarePublisher {
 
     private static final Logger logger = Logger.getLogger(BeanAwarePublisher.class.getSimpleName());
 
-    @SuppressWarnings("unchecked")
     public <R, I extends QueryCase> R publish(I queryDto) {
         QueryHandler<R, I> handler = HandlerRegistry.INSTANCE.fetchQueryHandlerFromRegistry(queryDto);
         validateQueryHandler(handler, queryDto);
         return handler.handle(queryDto);
     }
 
-    @SuppressWarnings("unchecked")
     public <R, I extends CommandCase> R publish(I commandDto) {
         CommandHandler<R, I> handler = HandlerRegistry.INSTANCE.fetchCommandHandlerFromRegistry(commandDto);
         validateCommandHandler(handler, commandDto);

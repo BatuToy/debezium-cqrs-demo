@@ -1,18 +1,21 @@
 package com.btoy.debezium.shared.annotations;
 
-import org.springframework.stereotype.Component;
+/*
+ * @created 11/10/2025 ~~ 09:46
+ * author: batu   
+ */
+
+import org.springframework.validation.annotation.Validated;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/*
- * @created 09/10/2025 ~~ 09:43
- * author: batu
- */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Component
-public @interface CommandHandler {
+@Validated
+public @interface DomainComponent {
+    String value() default "";
 }
+
